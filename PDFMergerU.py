@@ -129,11 +129,17 @@ class PDFMergerApp:
             for page_num in self.parse_pages(self.file2_pages, len(pdf_reader.pages)):
                 pdf_writer.add_page(pdf_reader.pages[page_num])
 
+        # Get the directory path of the first PDF file
+        save_directory = os.path.dirname(self.file1_path)
+
         merged_filename = f"merged_{uuid.uuid4().hex}.pdf"
-        with open(merged_filename, "wb") as merged_file:
+        merged_filepath = os.path.join(save_directory, merged_filename)
+
+        with open(merged_filepath, "wb") as merged_file:
             pdf_writer.write(merged_file)
 
-        messagebox.showinfo("Info", f"PDFs merged and saved as: {os.path.basename(merged_filename)}")
+        messagebox.showinfo("Info", f"PDFs merged and saved as: {os.path.basename(merged_filepath)}")
+
 
     def parse_pages(self, page_range_str, total_pages):
         if not page_range_str:
