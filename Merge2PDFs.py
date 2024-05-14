@@ -8,8 +8,9 @@ class PDFMergerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("PDF Merger")
-
-        # Frame for PDF 1
+        # self.root.geometry("500x300")
+        
+       # Frame for PDF 1
         self.frame1 = ttk.LabelFrame(root, text="PDF 1", padding="10")
         self.frame1.pack(pady=20, padx=10, fill="x")
 
